@@ -17,7 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.javy.hiring.R
 import com.javy.hiring.ui.screen.LoadingIndicator
 import com.javy.hiring.ui.theme.DarkBlue
@@ -28,7 +28,7 @@ import com.javy.hiring.ui.viewmodel.candidates.CandidatesViewModel
 @Composable
 fun CandidatesScreen() {
 
-    val viewModel = viewModel<CandidatesViewModel>()
+    val viewModel: CandidatesViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsState()
 
     Scaffold(
