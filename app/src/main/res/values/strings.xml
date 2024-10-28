@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Hiring Tool</string>
+    <string name="name_label">Name:</string>
+    <string name="list_id_label">List ID:</string>
 </resources>

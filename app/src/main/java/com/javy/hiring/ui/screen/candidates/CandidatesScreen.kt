@@ -17,9 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.javy.hiring.R
 import com.javy.hiring.ui.theme.DarkBlue
-import com.javy.hiring.ui.theme.HiringToolTheme
 import com.javy.hiring.ui.theme.White
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -43,33 +41,13 @@ fun CandidatesScreen() {
         contentWindowInsets = WindowInsets(0.dp)
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
-            Greeting(
-                name = "Android",
-                modifier = Modifier.padding(12.dp)
-            )
+            CandidateList()
         }
     }
 }
 
 @Preview
 @Composable
-fun HomeScreenPreview() {
+fun CandidateScreenPreview() {
     CandidatesScreen()
-}
-
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    HiringToolTheme {
-        Greeting("Android")
-    }
 }
