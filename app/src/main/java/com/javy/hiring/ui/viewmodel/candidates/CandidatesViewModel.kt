@@ -19,10 +19,10 @@ class CandidatesViewModel @Inject constructor(
     val uiState = _uiState.asStateFlow()
 
     init {
-        candidates()
+        fetchCandidates()
     }
 
-    private fun candidates() {
+    private fun fetchCandidates() {
         viewModelScope.launch {
             runCatching {
                 repository.candidates()
@@ -33,8 +33,13 @@ class CandidatesViewModel @Inject constructor(
                         isLoading = false
                     )
                 }
-            }.onFailure {
-                // implement error state
+            }.onFailure { e ->
+                _uiState.update {
+                    it.copy(
+                        isLoading = false,
+                        errorMessage = e.message
+                    )
+                }
             }
         }
     }

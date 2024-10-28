@@ -19,6 +19,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.javy.hiring.R
+import com.javy.hiring.ui.screen.EmptyListState
+import com.javy.hiring.ui.screen.ErrorState
 import com.javy.hiring.ui.screen.LoadingIndicator
 import com.javy.hiring.ui.theme.DarkBlue
 import com.javy.hiring.ui.theme.White
@@ -53,9 +55,11 @@ fun CandidatesScreen() {
             with(uiState) {
                 if (isLoading) LoadingIndicator()
 
-                if (candidates.isNotEmpty()) {
-                    CandidateList(candidates)
-                }
+                if (candidates.isNotEmpty()) CandidateList(candidates)
+
+                if (hasNoResults) EmptyListState()
+
+                if (hasError) ErrorState(errorMessage)
             }
         }
     }
